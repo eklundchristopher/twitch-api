@@ -1,4 +1,9 @@
-## \TwitchApi\Application `\TwitchApi\Contracts\Application`
+* Table of Contents:
+{:toc}
+
+## TwitchApi\Application
+This class implements the `\TwitchApi\Contracts\Application` contract.
+
 The entire API revolves around the `Application` object.
 
 ```php
@@ -40,7 +45,8 @@ $twitch = new TwitchApi\Application(
 | public static | scopes | - | string |
 | public static | redirect | - | string |
 
-## \TwitchApi\Authenticator `\TwitchApi\Contracts\Authenticator`
+## TwitchApi\Authenticator
+This class implements the `\TwitchApi\Contracts\Authenticator` contract.
 
 ```php
 $auth = new TwitchApi\Authenticator($twitch);
@@ -55,7 +61,8 @@ $auth = new TwitchApi\Authenticator($twitch);
 | public | user | - | \TwitchApi\Contracts\User |
 | public static | url | string $client null, string $redirect null, string $scopes null | string |
 
-## \TwitchApi\User `\TwitchApi\Contracts\User`
+## TwitchApi\User
+This class implements the `\TwitchApi\Contracts\User` contract.
 
 ### Class Methods
 
@@ -74,7 +81,8 @@ $auth = new TwitchApi\Authenticator($twitch);
 | public | isPartnered | - | boolean |
 | public | subscribesTo | string $streamer | boolean |
 
-## \TwitchApi\Request `\TwitchApi\Contracts\Request`
+## TwitchApi\Request
+This class implements the `\TwitchApi\Contracts\Request` contract.
 
 ### Class Methods
 
@@ -84,7 +92,8 @@ $auth = new TwitchApi\Authenticator($twitch);
 | public | get | string $endpoint, array $parameters [], array $headers [] | \TwitchApi\Contract\Response |
 | public | post | string $endpoint, array $parameters [], array $headers [] | \TwitchApi\Contract\Response |
 
-## \TwitchApi\Response `\TwitchApi\Contracts\Response`
+## TwitchApi\Response
+This class implements the `\TwitchApi\Contracts\Response` contract.
 
 ### Class Methods
 
