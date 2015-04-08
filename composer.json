@@ -1,0 +1,17 @@
+{
+	"name": "eklundchristopher/twitch-api",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Christopher Eklund",
+			"email": "eklundchristopher@gmail.com"
+		}
+	],
+	"minimum-stability": "dev",
+	"require": {},
+	"autoload": {
+		"psr-4": {
+			"TwitchApi\\": "src/"
+		}
+	}
+}
