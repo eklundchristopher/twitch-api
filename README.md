@@ -1,6 +1,3 @@
-* Table of Contents:
-{:toc}
-
 ## TwitchApi\Application
 This class implements the `\TwitchApi\Contracts\Application` contract.
 
