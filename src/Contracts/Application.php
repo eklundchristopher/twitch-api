@@ -13,34 +13,6 @@ interface Application {
 	public function __construct($client, $secret, array $scopes, $redirect);
 
 	/**
-	 * Retrieve the Twitch application client id.
-	 *
-	 * @return string
-	 */
-	public function client();
-	
-	/**
-	 * Retrieve the Twitch application client secret.
-	 *
-	 * @return string
-	 */
-	public function secret();
-
-	/**
-	 * Retrieve the Twitch application scopes.
-	 *
-	 * @return string
-	 */
-	public function scopes();
-
-	/**
-	 * Retrieve the Twitch application redirect URI.
-	 *
-	 * @return string
-	 */
-	public function redirect();
-
-	/**
 	 * Return the request implementation.
 	 *
 	 * @return \TwitchApi\Contracts\Request
@@ -73,5 +45,40 @@ interface Application {
 	 * @return \StdClass
 	 */
 	public function make($abstract, array $parameters = []);
+
+	/**
+	 * Retrieve the Twitch API url.
+	 *
+	 * @return string
+	 */
+	public static function api();
+
+	/**
+	 * Retrieve the Twitch application client id.
+	 *
+	 * @return string
+	 */
+	public static function client();
+	
+	/**
+	 * Retrieve the Twitch application client secret.
+	 *
+	 * @return string
+	 */
+	public static function secret();
+
+	/**
+	 * Retrieve the Twitch application scopes.
+	 *
+	 * @return string
+	 */
+	public static function scopes();
+
+	/**
+	 * Retrieve the Twitch application redirect URI.
+	 *
+	 * @return string
+	 */
+	public static function redirect();
 
 }

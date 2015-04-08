@@ -10,13 +10,6 @@ interface Authenticator {
 	public function __construct(Application $app);
 
 	/**
-	 * Return a Twitch authentication link.
-	 *
-	 * @return string
-	 */
-	public function login();
-
-	/**
 	 * Attempt to authenticate the user.
 	 *
 	 * @return boolean
@@ -29,5 +22,15 @@ interface Authenticator {
 	 * @return \TwitchApi\Contracts\User
 	 */
 	public function user();
+
+	/**
+	 * Return a Twitch authentication URL.
+	 *
+	 * @param  string  $client
+	 * @param  string  $redirect
+	 * @param  string  $scopes
+	 * @return string
+	 */
+	public static function url($client = null, $redirect = null, $scopes = null);
 
 }

@@ -10,7 +10,7 @@ class Application implements Contracts\Application {
 	 *
 	 * @var string
 	 */
-	public $api = 'https://api.twitch.tv/kraken';
+	public static $api = 'https://api.twitch.tv/kraken';
 
 	/**
 	 * Whether to verify the server certificate or not.
@@ -31,28 +31,28 @@ class Application implements Contracts\Application {
 	 *
 	 * @var string
 	 */
-	private $client;
+	private static $client;
 
 	/**
 	 * Holds the Twitch application client secret.
 	 *
 	 * @var string
 	 */
-	private $secret;
+	private static $secret;
 
 	/**
 	 * Holds the Twitch application scopes.
 	 *
 	 * @var array
 	 */
-	private $scopes;
+	private static $scopes;
 
 	/**
 	 * Holds the Twitch application redirect URI.
 	 *
 	 * @var string
 	 */
-	private $redirect;
+	private static $redirect;
 
 	/**
 	 * Holds all the bindings.
@@ -78,54 +78,14 @@ class Application implements Contracts\Application {
 	 */
 	public function __construct($client, $secret, array $scopes, $redirect)
 	{
-		$this->client = $client;
-		$this->secret = $secret;
-		$this->scopes = $scopes;
-		$this->redirect = $redirect;
+		static::$client = $client;
+		static::$secret = $secret;
+		static::$scopes = $scopes;
+		static::$redirect = $redirect;
 
 		$this->bind('TwitchApi\Contracts\Request', 'TwitchApi\Request');
 		$this->bind('TwitchApi\Contracts\Response', 'TwitchApi\Response');
 		$this->bind('TwitchApi\Contracts\User', 'TwitchApi\User');
-	}
-
-	/**
-	 * Retrieve the Twitch application client id.
-	 *
-	 * @return string
-	 */
-	public function client()
-	{
-		return $this->client;
-	}
-
-	/**
-	 * Retrieve the Twitch application client secret.
-	 *
-	 * @return string
-	 */
-	public function secret()
-	{
-		return $this->secret;
-	}
-
-	/**
-	 * Retrieve the Twitch application scopes.
-	 *
-	 * @return string
-	 */
-	public function scopes()
-	{
-		return implode(' ', $this->scopes);
-	}
-
-	/**
-	 * Retrieve the Twitch application redirect URI.
-	 *
-	 * @return string
-	 */
-	public function redirect()
-	{
-		return $this->redirect;
 	}
 
 	/**
@@ -198,6 +158,56 @@ class Application implements Contracts\Application {
 		array_unshift($parameters, $this);
 
 		return $class->newInstanceArgs($parameters);
+	}
+
+	/**
+	 * Retrieve the Twitch API url.
+	 *
+	 * @return string
+	 */
+	public static function api()
+	{
+		return static::$api;
+	}
+
+	/**
+	 * Retrieve the Twitch application client id.
+	 *
+	 * @return string
+	 */
+	public static function client()
+	{
+		return static::$client;
+	}
+
+	/**
+	 * Retrieve the Twitch application client secret.
+	 *
+	 * @return string
+	 */
+	public static function secret()
+	{
+		return static::$secret;
+	}
+
+	/**
+	 * Retrieve the Twitch application scopes.
+	 *
+	 * @return string
+	 */
+	public static function scopes()
+	{
+		return implode(' ', static::$scopes);
+	}
+
+	/**
+	 * Retrieve the Twitch application redirect URI.
+	 *
+	 * @return string
+	 */
+	public static function redirect()
+	{
+		return static::$redirect;
 	}
 
 }

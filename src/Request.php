@@ -55,7 +55,7 @@ class Request implements Contracts\Request {
 	 */
 	private function request($method, $endpoint, array $parameters = [], array $headers = [])
 	{
-		$request = curl_init($this->app->api.$endpoint);
+		$request = curl_init($endpoint = Application::api().$endpoint);
 
 		curl_setopt($request, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($request, CURLOPT_SSL_VERIFYPEER, (boolean) $this->app->verifypeer);
@@ -66,7 +66,7 @@ class Request implements Contracts\Request {
 
 		$headers = array_merge($headers, array_filter([
 			$this->app->v3 ? 'Accept: application/vnd.twitchtv.v3+json' : null,
-			'Client-ID: '.$this->app->client(),
+			'Client-ID: '.Application::client(),
 		]));
 
 		curl_setopt($request, CURLOPT_HTTPHEADER, $headers);
@@ -79,7 +79,7 @@ class Request implements Contracts\Request {
 			$response,
 			[
 				'method'	 => $method,
-				'endpoint'	 => $this->app->api.$endpoint,
+				'endpoint'	 => $endpoint,
 				'parameters' => $parameters,
 				'headers'	 => $headers,
 			],

@@ -20,21 +20,6 @@ class Authenticator implements Contracts\Authenticator {
 	}
 
 	/**
-	 * Return a Twitch authentication link.
-	 *
-	 * @return string
-	 */
-	public function login()
-	{
-		return sprintf("%s/oauth2/authorize?%s", $this->app->api, http_build_query([
-			'response_type'	 => 'code',
-			'client_id'		 => $this->app->client(),
-			'redirect_uri'	 => $this->app->redirect(),
-			'scope'			 => $this->app->scopes(),
-		]));
-	}
-
-	/**
 	 * Attempt to authenticate the user.
 	 *
 	 * @return boolean
@@ -72,6 +57,24 @@ class Authenticator implements Contracts\Authenticator {
 	public function user()
 	{
 		return $this->app->instance('TwitchApi\Contracts\User');
+	}
+
+	/**
+	 * Return a Twitch authentication URL.
+	 *
+	 * @param  string  $client
+	 * @param  string  $redirect
+	 * @param  string  $scopes
+	 * @return string
+	 */
+	public static function url($client = null, $redirect = null, $scopes = null)
+	{
+		return sprintf("%s/oauth2/authorize?%s", Application::api(), http_build_query([
+			'response_type'	 => 'code',
+			'client_id'		 => $client ?: Application::client(),
+			'redirect_uri'	 => $redirect ?: Application::redirect(),
+			'scope'			 => $scopes ?: Application::scopes(),
+		]));
 	}
 
 }

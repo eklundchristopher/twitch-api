@@ -81,4 +81,12 @@ interface User {
 	 */
 	public function isPartnered();
 
+	/**
+	 * Check whether the Twitch user is subscribed to a certain channel.
+	 *
+	 * @param  string  $streamer
+	 * @return boolean
+	 */
+	public function subscribesTo($streamer);
+
 }
