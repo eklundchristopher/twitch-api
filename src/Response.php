@@ -1,6 +1,6 @@
 <?php namespace TwitchApi;
 
-class Response {
+class Response implements Contracts\Response {
 
 	/**
 	 * Holds the original request and response data.

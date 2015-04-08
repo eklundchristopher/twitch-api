@@ -64,7 +64,12 @@ class Request implements Contracts\Request {
 
 		if ( ! empty($parameters)) curl_setopt($request, CURLOPT_POSTFIELDS, $parameters);
 
-		if ( ! empty($headers)) curl_setopt($request, CURLOPT_HTTPHEADER, $headers);
+		$headers = array_merge($headers, array_filter([
+			$this->app->v3 ? 'Accept: application/vnd.twitchtv.v3+json' : null,
+			'Client-ID: '.$this->app->client(),
+		]));
+
+		curl_setopt($request, CURLOPT_HTTPHEADER, $headers);
 
 		$response = curl_exec($request);
 

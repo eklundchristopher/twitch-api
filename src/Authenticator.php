@@ -43,7 +43,7 @@ class Authenticator implements Contracts\Authenticator {
 	{
 		if ( ! isset($_REQUEST['code'])) return false;
 
-		$response = $this->app->request()->post('/oauth2/token', [
+		$token = $this->app->request()->post('/oauth2/token', [
 			'client_id'		 => $this->app->client(),
 			'client_secret'	 => $this->app->secret(),
 			'grant_type'	 => 'authorization_code',
@@ -51,9 +51,27 @@ class Authenticator implements Contracts\Authenticator {
 			'code'			 => $_REQUEST['code'],
 		]);
 
-		var_dump($response);
+		if ($token->error) return false;
 
-		return ! $response->error;
+		$user = $this->app->request()->get('/user', [], [
+			'Authorization: OAuth '.$token->access_token,
+		]);
+
+		if ($user->error) return false;
+
+		return $this->app->instance('TwitchApi\Contracts\User', [
+			$token, $user
+		]);
+	}
+
+	/**
+	 * Retrieve the user implementation.
+	 *
+	 * @return \TwitchApi\Contracts\User
+	 */
+	public function user()
+	{
+		return $this->app->instance('TwitchApi\Contracts\User');
 	}
 
 }

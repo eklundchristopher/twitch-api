@@ -20,32 +20,39 @@ class Application implements Contracts\Application {
 	public $verifypeer = true;
 
 	/**
+	 * Whether to use Twitch API v3 or not.
+	 *
+	 * @var boolean
+	 */
+	public $v3 = true;
+
+	/**
 	 * Holds the Twitch application client id.
 	 *
 	 * @var string
 	 */
-	protected $client;
+	private $client;
 
 	/**
 	 * Holds the Twitch application client secret.
 	 *
 	 * @var string
 	 */
-	protected $secret;
+	private $secret;
 
 	/**
 	 * Holds the Twitch application scopes.
 	 *
 	 * @var array
 	 */
-	protected $scopes;
+	private $scopes;
 
 	/**
 	 * Holds the Twitch application redirect URI.
 	 *
 	 * @var string
 	 */
-	protected $redirect;
+	private $redirect;
 
 	/**
 	 * Holds all the bindings.

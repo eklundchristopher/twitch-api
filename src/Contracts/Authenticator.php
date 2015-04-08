@@ -23,4 +23,11 @@ interface Authenticator {
 	 */
 	public function authenticate();
 
+	/**
+	 * Retrieve the user implementation.
+	 *
+	 * @return \TwitchApi\Contracts\User
+	 */
+	public function user();
+
 }
