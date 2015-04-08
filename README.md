@@ -1,3 +1,59 @@
+# Twitch Api
+
+This is a PHP library to simplify working with the Twitch API.
+
+
+
+
+## Installation
+
+Install by running the following [Composer](https://getcomposer.org/) command:
+
+```bash
+composer require eklundchristopher/twitch-api
+```
+
+
+
+
+## Example
+
+Below is an example for authenticating the user, checking if the user is subscribed to the user `obnoxiousfrog`, and if they are, they are greeted with a message. If not, an exception is thrown for logging, and/or redirecting the user to another page with an error message.
+
+```php
+<?php require_once 'vendor/autoload.php';
+
+try {
+
+	$auth = new TwitchApi\Authenticator(new TwitchApi\Application(
+		'3nyv5fcqdpg8uakewz6mj27r49xhbs',
+		'aqdrje795sh4nm2fk8btpwuvy3cg6z',
+		['user_read', 'user_subscriptions'],
+		'https://www.domain.tld/authenticate',
+	));
+	
+	if ( ! $auth->authenticate() or ! ($user = $auth->user())
+	{
+		throw new Exception('Oops, something went wrong!');
+	}
+	
+	if ( ! $user->subscribedTo('obnoxiousfrog'))
+	{
+		throw new Exception('You are not a subscriber of ObnoxiousFrog!');
+	}
+	
+	echo 'Welcome, '.$user->displayname().'!';
+
+} catch (Exception $e) {
+	// Log error
+}
+```
+
+
+
+
+# Documentation
+
 ## TwitchApi\Application
 This class implements the `\TwitchApi\Contracts\Application` contract.
 
@@ -26,7 +82,7 @@ $twitch = new TwitchApi\Application(
 );
 ```
 
-### Class Methods
+#### Class Methods
 
 | Visibility | Method | Arguments | Return |
 |--------------:|-------------|--------------------------------------------------------------|------------------------------|
@@ -42,6 +98,9 @@ $twitch = new TwitchApi\Application(
 | public static | scopes | - | string |
 | public static | redirect | - | string |
 
+
+
+
 ## TwitchApi\Authenticator
 This class implements the `\TwitchApi\Contracts\Authenticator` contract.
 
@@ -49,7 +108,7 @@ This class implements the `\TwitchApi\Contracts\Authenticator` contract.
 $auth = new TwitchApi\Authenticator($twitch);
 ```
 
-### Class Methods
+#### Class Methods
 
 | Visibility | Method | Arguments | Return |
 |--------------:|--------------|-----------------------------------------------------------------|---------------------------|
@@ -58,10 +117,13 @@ $auth = new TwitchApi\Authenticator($twitch);
 | public | user | - | \TwitchApi\Contracts\User |
 | public static | url | string $client null, string $redirect null, string $scopes null | string |
 
+
+
+
 ## TwitchApi\User
 This class implements the `\TwitchApi\Contracts\User` contract.
 
-### Class Methods
+#### Class Methods
 
 | Visibility | Method | Arguments | Return |
 |-----------:|--------------|------------------------------------------------------------------------------------------------------------------|---------|
@@ -78,10 +140,13 @@ This class implements the `\TwitchApi\Contracts\User` contract.
 | public | isPartnered | - | boolean |
 | public | subscribesTo | string $streamer | boolean |
 
+
+
+
 ## TwitchApi\Request
 This class implements the `\TwitchApi\Contracts\Request` contract.
 
-### Class Methods
+#### Class Methods
 
 | Visibility | Method | Arguments | Return |
 |-----------:|-------------|-----------------------------------------------------------|------------------------------|
@@ -89,10 +154,13 @@ This class implements the `\TwitchApi\Contracts\Request` contract.
 | public | get | string $endpoint, array $parameters [], array $headers [] | \TwitchApi\Contract\Response |
 | public | post | string $endpoint, array $parameters [], array $headers [] | \TwitchApi\Contract\Response |
 
+
+
+
 ## TwitchApi\Response
 This class implements the `\TwitchApi\Contracts\Response` contract.
 
-### Class Methods
+#### Class Methods
 
 | Visibility | Method | Arguments | Return |
 |-----------:|-------------|-------------------------------------------------------------------------|--------|
