@@ -166,3 +166,15 @@ This class implements the `\TwitchApi\Contracts\Response` contract.
 |------------|-------------|-------------------------------------------------------------------------|--------|
 | public | __construct | \TwitchApi\Contracts\Application $app, string $response, array $request | void |
 | public | __get | string $property | mixed |
+
+
+
+
+## Using your own classes
+Make sure your own classes implement the appropriate contract (_you may find all the contracts below the title of each class documentation above_), and then you may simply run the `bind` method from the `\TwitchApi\Application` object.
+
+For example, the following would replace the TwitchApi User class with your own:
+
+```php
+$twitch->bind('TwitchApi\Contracts\User', 'CustomUserClass');
+```
