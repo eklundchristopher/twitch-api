@@ -10,7 +10,7 @@ This is a PHP library to simplify working with the Twitch API.
 Install by running the following [Composer](https://getcomposer.org/) command:
 
 ```bash
-composer require eklundchristopher/twitch-api
+composer require obnoxiousfrog/twitch-api
 ```
 
 
