@@ -85,7 +85,7 @@ $twitch = new TwitchApi\Application(
 #### Class Methods
 
 | Visibility | Method | Arguments | Return |
-|--------------:|-------------|--------------------------------------------------------------|------------------------------|
+|---------------|-------------|--------------------------------------------------------------|------------------------------|
 | public | __construct | string $client string $secret array $scopes string $redirect | void |
 | public | request | - | \TwitchApi\Contracts\Request |
 | public | bind | string $abstract, string $concrete | void |
@@ -111,7 +111,7 @@ $auth = new TwitchApi\Authenticator($twitch);
 #### Class Methods
 
 | Visibility | Method | Arguments | Return |
-|--------------:|--------------|-----------------------------------------------------------------|---------------------------|
+|---------------|--------------|-----------------------------------------------------------------|---------------------------|
 | public | __construct | \TwitchApi\Contracts\Application $app | void |
 | public | authenticate | - | boolean |
 | public | user | - | \TwitchApi\Contracts\User |
@@ -126,7 +126,7 @@ This class implements the `\TwitchApi\Contracts\User` contract.
 #### Class Methods
 
 | Visibility | Method | Arguments | Return |
-|-----------:|--------------|------------------------------------------------------------------------------------------------------------------|---------|
+|------------|--------------|------------------------------------------------------------------------------------------------------------------|---------|
 | public | __construct | \TwitchApi\Contracts\Application $app, \TwitchApi\Contracts\Response $token, \TwitchApi\Contracts\Response $user | void |
 | public | accessToken | - | string |
 | public | refreshToken | - | string |
@@ -149,7 +149,7 @@ This class implements the `\TwitchApi\Contracts\Request` contract.
 #### Class Methods
 
 | Visibility | Method | Arguments | Return |
-|-----------:|-------------|-----------------------------------------------------------|------------------------------|
+|------------|-------------|-----------------------------------------------------------|------------------------------|
 | public | __construct | \TwitchApi\Contracts\Application $app | void |
 | public | get | string $endpoint, array $parameters [], array $headers [] | \TwitchApi\Contract\Response |
 | public | post | string $endpoint, array $parameters [], array $headers [] | \TwitchApi\Contract\Response |
@@ -163,6 +163,6 @@ This class implements the `\TwitchApi\Contracts\Response` contract.
 #### Class Methods
 
 | Visibility | Method | Arguments | Return |
-|-----------:|-------------|-------------------------------------------------------------------------|--------|
+|------------|-------------|-------------------------------------------------------------------------|--------|
 | public | __construct | \TwitchApi\Contracts\Application $app, string $response, array $request | void |
 | public | __get | string $property | mixed |
