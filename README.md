@@ -37,7 +37,12 @@ try {
 		throw new Exception('Oops, something went wrong!');
 	}
 	
-	if ( ! $user->subscribedTo('obnoxiousfrog'))
+	if ( ! $user->isFollowing('obnoxiousfrog'))
+	{
+		throw new Exception('You are not a follower of ObnoxiousFrog!');
+	}
+	
+	if ( ! $user->isSubscribed('obnoxiousfrog'))
 	{
 		throw new Exception('You are not a subscriber of ObnoxiousFrog!');
 	}
@@ -138,7 +143,8 @@ This class implements the `\TwitchApi\Contracts\User` contract.
 | public | bio | - | string |
 | public | timestamps | - | array |
 | public | isPartnered | - | boolean |
-| public | subscribesTo | string $streamer | boolean |
+| public | isSubscribed | string $streamer | boolean |
+| public | isFollowing | string $streamer | boolean |
 
 
 

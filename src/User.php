@@ -146,9 +146,26 @@ class User implements Contracts\User {
 	 * @param  string  $streamer
 	 * @return boolean
 	 */
-	public function subscribesTo($streamer)
+	public function isSubscribed($streamer)
 	{
 		$endpoint = '/users/'.$this->name().'/subscriptions/'.strtolower($streamer);
+
+		$response = $this->app->request()->get($endpoint, [], [
+			'Authorization: OAuth '.$this->accessToken(),
+		]);
+
+		return (boolean) $response->created_at;
+	}
+
+	/**
+	 * Check whether the Twitch user is following a certain channel.
+	 *
+	 * @param  string  $streamer
+	 * @return boolean
+	 */
+	public function isFollowing($streamer)
+	{
+		$endpoint = '/users/'.$this->name().'/follows/channels/'.strtolower($streamer);
 
 		$response = $this->app->request()->get($endpoint, [], [
 			'Authorization: OAuth '.$this->accessToken(),

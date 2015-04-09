@@ -87,6 +87,14 @@ interface User {
 	 * @param  string  $streamer
 	 * @return boolean
 	 */
-	public function subscribesTo($streamer);
+	public function isSubscribed($streamer);
+
+	/**
+	 * Check whether the Twitch user is following a certain channel.
+	 *
+	 * @param  string  $streamer
+	 * @return boolean
+	 */
+	public function isFollowing($streamer);
 
 }
