@@ -18,7 +18,7 @@ composer require obnoxiousfrog/twitch-api
 
 ## Example
 
-Below is an example for authenticating the user, checking if the user is subscribed to the user `obnoxiousfrog`, and if they are, they are greeted with a message. If not, an exception is thrown for logging, and/or redirecting the user to another page with an error message.
+Below is an example for authenticating the user, checking if the user is following and subscribed to the user `obnoxiousfrog`, and if they are, they are greeted with a message. If not, an exception is thrown for logging, and/or redirecting the user to another page with an error message.
 
 ```php
 <?php require_once 'vendor/autoload.php';
