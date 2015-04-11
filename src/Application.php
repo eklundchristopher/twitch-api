@@ -86,6 +86,7 @@ class Application implements Contracts\Application {
 		$this->bind('TwitchApi\Contracts\Request', 'TwitchApi\Request');
 		$this->bind('TwitchApi\Contracts\Response', 'TwitchApi\Response');
 		$this->bind('TwitchApi\Contracts\User', 'TwitchApi\User');
+		$this->bind('TwitchApi\Contracts\Channel', 'TwitchApi\Channel');
 	}
 
 	/**
@@ -208,6 +209,25 @@ class Application implements Contracts\Application {
 	public static function redirect()
 	{
 		return static::$redirect;
+	}
+
+	/**
+	 * Filter the array using the given callback.
+	 *
+	 * @param  array  $array
+	 * @param  callable  $callback
+	 * @return array
+	 */
+	public static function where($array, callable $callback)
+	{
+		$filtered = [];
+
+		foreach ($array as $key => $value)
+		{
+			if (call_user_func($callback, $key, $value)) $filtered[$key] = $value;
+		}
+
+		return $filtered;
 	}
 
 }

@@ -60,6 +60,17 @@ class Authenticator implements Contracts\Authenticator {
 	}
 
 	/**
+	 * Create a channel instance.
+	 *
+	 * @param  string  $channel
+	 * @return \TwitchApi\Contracts\Channel
+	 */
+	public function channel($channel)
+	{
+		return $this->app->make('TwitchApi\Contracts\Channel', [$this->user(), $channel]);
+	}
+
+	/**
 	 * Return a Twitch authentication URL.
 	 *
 	 * @param  string  $client

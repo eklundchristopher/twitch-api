@@ -81,4 +81,13 @@ interface Application {
 	 */
 	public static function redirect();
 
+	/**
+	 * Filter the array using the given callback.
+	 *
+	 * @param  array  $array
+	 * @param  callable  $callback
+	 * @return array
+	 */
+	public static function where($array, callable $callback);
+
 }
