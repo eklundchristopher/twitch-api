@@ -42,7 +42,7 @@ class Channel implements Contracts\Channel {
 	/**
 	 * Get all the teams that a channel belong to.
 	 *
-	 * @return \TwitchApi\Contracts\Response
+	 * @return array
 	 */
 	public function teams()
 	{
@@ -60,7 +60,7 @@ class Channel implements Contracts\Channel {
 	/**
 	 * Get all of the emoticons of a certain channel.
 	 *
-	 * @return \TwitchApi\Contracts\Response
+	 * @return array
 	 */
 	public function emoticons()
 	{

@@ -159,8 +159,8 @@ This class implements the `\TwitchApi\Contracts\Channel` contract.
 |------------|--------------|------------------------------------------------------------------------------------------------------------------|---------|
 | public | __construct | \TwitchApi\Contracts\Application $app, \TwitchApi\Contracts\User $user, string $channel | void |
 | public | get | - | \TwitchApi\Contracts\Response |
-| public | teams | - | \TwitchApi\Contracts\Response |
-| public | emoticons | - | \TwitchApi\Contracts\Response |
+| public | teams | - | array |
+| public | emoticons | - | array |
 
 
 
