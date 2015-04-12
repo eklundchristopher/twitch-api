@@ -120,6 +120,7 @@ $auth = new TwitchApi\Authenticator($twitch);
 | public | __construct | \TwitchApi\Contracts\Application $app | void |
 | public | authenticate | - | boolean |
 | public | user | - | \TwitchApi\Contracts\User |
+| public | channel | string $channel | \TwitchApi\Contracts\Channel
 | public static | url | string $client null, string $redirect null, string $scopes null | string |
 
 
@@ -145,6 +146,21 @@ This class implements the `\TwitchApi\Contracts\User` contract.
 | public | isPartnered | - | boolean |
 | public | isSubscribed | string $streamer | boolean |
 | public | isFollowing | string $streamer | boolean |
+
+
+
+
+## TwitchApi\Channel
+This class implements the `\TwitchApi\Contracts\Channel` contract.
+
+#### Class Methods
+
+| Visibility | Method | Arguments | Return |
+|------------|--------------|------------------------------------------------------------------------------------------------------------------|---------|
+| public | __construct | \TwitchApi\Contracts\Application $app, \TwitchApi\Contracts\User $user, string $channel | void |
+| public | get | - | \TwitchApi\Contracts\Response |
+| public | teams | - | \TwitchApi\Contracts\Response |
+| public | emoticons | - | \TwitchApi\Contracts\Response |
 
 
 
