@@ -40,6 +40,24 @@ class Channel implements Contracts\Channel {
 	}
 
 	/**
+	 * Get all the editors of the channel.
+	 *
+	 * @return array
+	 */
+	public function editors()
+	{
+		$endpoint = '/channels/'.$this->channel.'/editors';
+
+		$response = $this->app->request()->get($endpoint, [], [
+			'Authorization: OAuth '.$this->user->accessToken(),
+		]);
+
+		if ( ! isset($response->users)) return [];
+
+		return $response->users;
+	}
+
+	/**
 	 * Get all the teams that a channel belong to.
 	 *
 	 * @return array
