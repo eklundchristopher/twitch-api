@@ -19,16 +19,23 @@ interface Channel {
 	public function get();
 
 	/**
+	 * Get all the editors of the channel.
+	 *
+	 * @return array
+	 */
+	public function editors();
+
+	/**
 	 * Check whether the Twitch user is following a certain channel.
 	 *
-	 * @return \TwitchApi\Contracts\Response
+	 * @return array
 	 */
 	public function teams();
 
 	/**
 	 * Get all of the emoticons of a certain channel.
 	 *
-	 * @return \TwitchApi\Contracts\Response
+	 * @return array
 	 */
 	public function emoticons();
 

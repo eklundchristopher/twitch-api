@@ -52,9 +52,7 @@ class Channel implements Contracts\Channel {
 			'Authorization: OAuth '.$this->user->accessToken(),
 		]);
 
-		if ( ! isset($response->users)) return [];
-
-		return $response->users;
+		return (array) $response->users;
 	}
 
 	/**
