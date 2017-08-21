@@ -2,6 +2,14 @@
 
 This is a PHP library to simplify working with the Twitch API.
 
+> **PLEASE READ**
+>
+> It has come to my attention that this package may no longer be compatible with the recent Twitch API changes. Unfortunately, I do not have the time required to look into it at the moment. Hopefully, I will some day in the not too distant future, and maybe I'll even go ahead and re-write it completely. I will not offer support on any major feature requests or issues until then.
+>
+> Please keep this in mind if you decide to use and/or rely on this package.
+>
+> Thank you.
+
 
 
 
@@ -32,7 +40,7 @@ try {
 		'https://www.domain.tld/authenticate'
 	));
 	
-	if ( ! $auth->authenticate() or ! ($user = $auth->user())
+	if ( ! $auth->authenticate() or ! ($user = $auth->user()))
 	{
 		throw new Exception('Oops, something went wrong!');
 	}
