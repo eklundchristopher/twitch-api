@@ -29,7 +29,7 @@ try {
 		'3nyv5fcqdpg8uakewz6mj27r49xhbs',
 		'aqdrje795sh4nm2fk8btpwuvy3cg6z',
 		['user_read', 'user_subscriptions'],
-		'https://www.domain.tld/authenticate',
+		'https://www.domain.tld/authenticate'
 	));
 	
 	if ( ! $auth->authenticate() or ! ($user = $auth->user())
